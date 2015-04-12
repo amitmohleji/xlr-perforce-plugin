@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<type type="perforce.ReleaseTrigger" extends="xlrelease.ReleaseTrigger" >
+    <!-- if we omit this property, XL Release will look for 'demo/MyFirstTrigger.py', based on the name of the type -->
+    <property name="scriptLocation" default="perforce/trigger-release.py" hidden="true"/>
+    <!-- don't forget 'category="variables"' here! -->
+        <property name="username" category="input" label="username" required="false" />
+        <property name="password" password="true" category="input" required="false" />
+    <property name="perforceServer" category="input" label="Server" referenced-type="perforce.Server" kind="ci"/>
+    <property name="depotPaths" category="input" required="true" />
+    <!-- <property name="clientName" category="input" hidden="true" required="false" /> -->
+    <property name="commitId" category="variables" required="false" />
+</type>
+
+    <type type="perforce.Server" extends="configuration.HttpConnection"/>
+</synthetic>
